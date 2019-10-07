@@ -22,3 +22,13 @@ cd /root
 ## Additional Notes
 
 The `run_spark_dotnet_demo` script pulls an F# project from another repo of mine, at https://github.com/feaselkl/Getting-Started-With-Apache-Spark.
+
+If you see problems running run_spark_dotnet_demo about missing files and see "\r" at the end, that means the run_spark_dotnet_demo file has Windows-style line endings.  Change the file to use Linux-style file endings if this is the case.  You can do so inside your docker container.  Here is one example of doing so:
+
+```
+tr -d '\15\32' < run_spark_dotnet_demo_test > run_spark_dotnet_demo_lf
+chmod +x run_spark_dotnet_demo_lf
+./run_spark_dotnet_demo_lf
+```
+
+You can also change the file ending in Windows using a tool like Notepad++ and then rebuild the container.
